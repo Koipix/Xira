@@ -1,0 +1,55 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.upload_form {
+  height: 230px;
+  padding: 3rem;
+  border-radius: 20px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.file_input{
+  display: none
+}
+
+.file_input:hover {
+  cursor: pointer;
+}
+
+.upload_btn {
+  margin-top: 50px;
+  width: 80%;
+  height: 50px;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+label {
+  height: 1.2rem;
+  width: 200px;
+  color: black;
+  border: 2px black dashed;
+  border-radius: 17px;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.msg {
+  color: gray
+}
+
+
