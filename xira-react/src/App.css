@@ -6,7 +6,7 @@
 }
 
 .upload_form {
-  height: 230px;
+  height: 30%;
   padding: 3rem;
   border-radius: 20px;
   background-color: #ffffff;
@@ -20,8 +20,25 @@
   display: none
 }
 
-.file_input:hover {
+.file_hover:hover {
   cursor: pointer;
+}
+h4 {
+  color: black;
+  margin-bottom: 10px;
+}
+.uploaded_files p {
+  margin-top: 10px;
+  color: black;
+}
+
+.uploaded_files {
+  display: flex;
+  justify-content: center;
+  gap: 50%;
+  background-color: #D9D7D7;
+  width: 100%;
+  padding: 0 30px;
 }
 
 .upload_btn {
