@@ -3,16 +3,20 @@ import './App.css'
 
 function App() {
   const [file, setFile] = useState<File | null>(null); //barebones for now..
+  const [result, setResult] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  const [result, setResult] = useState("");
-
-  const OnChange = (event) => {
-    const uploadedFile = event.target.files[0];
-    setFile(uploadedFile); 
-  }
+  const OnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0] || null;
+    setFile(selectedFile);
+    setResult(null); // clear old result when uploading new file
+  };
   async function AnalyzeFile() {
+    setLoading(true);
+    setResult(null);
     const res = await SendFile();
     await ReceiveResults(res);
+    setLoading(false);
   }
   async function SendFile() {
     const formData = new FormData();
@@ -33,7 +37,7 @@ function App() {
     <h1>PE Malware Analysis</h1>
       <div className = "upload_form">
         <input 
-          type = "file" 
+  type = "file" 
           className = "file_input" 
           id = "file_input" 
           accept = ".exe"
@@ -51,18 +55,21 @@ function App() {
            </div>
            </>
         )}
-
-        <button className = "upload_btn">Analyze</button>
         <button 
-          className = "upload_btn"
-          onClick = {AnalyzeFile}>
-                Analyze
+          className = {'upload_btn ${loading ? "loading" : ""}'}
+          onClick = {AnalyzeFile}
+          disabled = {loading || !file}>
+              {loading ? "Analyzing..." : "Analyze"}
         </button>
         {result && (
-          <>
-          <p> {result} </p> 
-          </>
-        )}
+        <>
+          <p
+            className={`result ${result === "malicious" ? "malicious" : "benign"}`}
+          >
+            {result === "malicious" ? "Malicious File!" : "Safe File!"}
+          </p>
+        </>
+)}
       </div>
     </>
   )

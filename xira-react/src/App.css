@@ -32,6 +32,23 @@ p {
   color: black;
 }
 
+.result {
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8%;
+}
+
+.benign {
+  background-color: #27F527;
+}
+
+.malicious {
+  background-color: red;
+}
+
+
 .uploaded_files {
   display: flex;
   justify-content: center;
@@ -48,6 +65,7 @@ p {
   border-radius: 15px;
   font-size: 1.2rem;
   font-weight: 500;
+  margin-bottom: 20px;
 }
 
 label {
