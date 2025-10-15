@@ -3,10 +3,31 @@ import './App.css'
 
 function App() {
   const [file, setFile] = useState<File | null>(null); //barebones for now..
-  const OnChange = (files) => {
-    const uploadedFile = files.target.files[0];
-    setFile(uploadedFile);  
-}
+
+  const [result, setResult] = useState("");
+
+  const OnChange = (event) => {
+    const uploadedFile = event.target.files[0];
+    setFile(uploadedFile); 
+  }
+  async function AnalyzeFile() {
+    const res = await SendFile();
+    await ReceiveResults(res);
+  }
+  async function SendFile() {
+    const formData = new FormData();
+    formData.append("file", file);
+    const res = await fetch("http://localhost:8000/upload", {
+      method: "POST",
+      body: formData
+    })
+    return res;
+  }
+  async function ReceiveResults(res) {
+    const data = await res.json();
+    setResult(data.result);
+  }
+
   return (
     <>
     <h1>PE Malware Analysis</h1>
@@ -30,7 +51,18 @@ function App() {
            </div>
            </>
         )}
+
         <button className = "upload_btn">Analyze</button>
+        <button 
+          className = "upload_btn"
+          onClick = {AnalyzeFile}>
+                Analyze
+        </button>
+        {result && (
+          <>
+          <p> {result} </p> 
+          </>
+        )}
       </div>
     </>
   )
