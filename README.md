@@ -20,10 +20,8 @@ sklearn-env\Scripts\activate
 ```
 ### Install the libraries within virtual environment or globally
 ```
-pip install -U scikit-learn pandas lief uvicon
+pip install -r requirements.txt
 ```
-I'll setup up the requirements file for this later
-
 ### Go to into ```xira-react``` and install npm packages
 ```
 cd xira-react
