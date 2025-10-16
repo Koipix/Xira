@@ -34,6 +34,11 @@ npm i
 npm run dev
 ```
 
+### File Path Convention
+The function will dynamically look for the dataset at `$HOME/ember_dataset/train_features.1.jsonl` so be sure to transfer the specific file required at your home directory as followed.
+
+This will eliminate the need to change the file path everytime when the project is pulled from a different device thus improving efficiency and saving you a good time.
+
 ## Credits
 [EMBER](https://github.com/elastic/ember) for the abundant dataset for classfying malware and made this project possible.
 
