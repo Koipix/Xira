@@ -11,6 +11,7 @@ function App() {
     setFile(selectedFile);
     setResult(null); // clear old result when uploading new file
   };
+  
   async function AnalyzeFile() {
     setLoading(true);
     setResult(null);
@@ -18,6 +19,7 @@ function App() {
     await ReceiveResults(res);
     setLoading(false);
   }
+
   async function SendFile() {
     const formData = new FormData();
     formData.append("file", file);
@@ -62,13 +64,13 @@ function App() {
               {loading ? "Analyzing..." : "Analyze"}
         </button>
         {result && (
-        <>
-          <p
+        <div>
+          <h1
             className={`result ${result === "malicious" ? "malicious" : "benign"}`}
           >
             {result === "malicious" ? "Malicious File!" : "Safe File!"}
-          </p>
-        </>
+          </h1>
+        </div>
 )}
       </div>
     </>
