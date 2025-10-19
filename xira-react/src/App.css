@@ -3,18 +3,23 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
 }
 
 .upload_form {
+  width: 80%;
   height: 30%;
-  padding: 3rem;
+  padding: 40px 30px 20px 30px;
   border-radius: 20px;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .file_input{
@@ -24,9 +29,11 @@
 .file_hover:hover {
   cursor: pointer;
 }
+
 h1 {
   margin: 0;
   margin-top: 20px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 h4 {
@@ -34,27 +41,33 @@ h4 {
   margin-bottom: 10px;
 }
 
-p {
+.uploaded_files p {
   margin-top: 10px;
   color: black;
 }
 
 .result {
-  font-weight: bold;
-  font-size: 2rem;
+  font-weight: 600;
+  font-size: 1.7rem;
   text-align: center;
-  padding: 10px 25px;
+  padding: 0 25px;
   border-radius: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .benign {
-  background-color: #77FF87;
+  color: #a7c957;
 }
 
 .malicious {
-  background-color: red;
+  color: #ef233c;
 }
 
+.icon {
+  margin-right: 15px;
+  font-size: 2rem;
+}
 
 .uploaded_files {
   display: flex;

@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons' 
 import './App.css'
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
     })
     return res;
   }
+
   async function ReceiveResults(res) {
     const data = await res.json();
     setResult(data.result);
@@ -57,21 +60,31 @@ function App() {
            </div>
            </>
         )}
+        
+        {result && (
+        <div>
+          <div className={`result ${result === "malicious" ? "malicious" : "benign"}`}>
+            {result === "malicious" ? (
+                <>
+                  <FontAwesomeIcon className = "icon" icon={faXmark}/>
+                  <p>Possibly Malicious!</p>
+                </>
+                ) : (
+                <>
+                  <FontAwesomeIcon className = "icon" icon={faCheck}/>
+                  <p>File looks good!</p>
+                </>
+              )}
+          </div>
+        </div>
+        )}
+
         <button 
           className = {'upload_btn ${loading ? "loading" : ""}'}
           onClick = {AnalyzeFile}
           disabled = {loading || !file}>
-              {loading ? "Analyzing..." : "Analyze"}
+              {loading ? "Analyzing..." : "Analyze"} 
         </button>
-        {result && (
-        <div>
-          <h1
-            className={`result ${result === "malicious" ? "malicious" : "benign"}`}
-          >
-            {result === "malicious" ? "Malicious File!" : "Safe File!"}
-          </h1>
-        </div>
-)}
       </div>
     </>
   )
